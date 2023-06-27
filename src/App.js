@@ -23,7 +23,7 @@ function App() {
         onUserAdd={handleUserAdd}
         onError={(error) => handleError(error)}
       />
-      <UsersList users={users} />
+      {users.length > 0 && <UsersList users={users} />} 
       {error && (
         <ErrorModal error={error} onError={(error) => handleError(error)} />
       )}

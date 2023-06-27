@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 
 import styles from './AddUser.module.css';
 import Button from '../UI/Button';
+import Card from '../UI/Card';
+
+const initialUserState = {
+  username: '',
+  age: '',
+};
 
 const AddUser = (props) => {
-  const [user, setUser] = useState({
-    username: '',
-    age: '',
-  });
+  const [user, setUser] = useState(initialUserState);
 
   const handleChange = (e) => {
     setUser((prevState) => {
@@ -36,19 +39,32 @@ const AddUser = (props) => {
     }
 
     props.onUserAdd(user);
+    setUser(initialUserState);
   };
   return (
-    <form className={styles.input} onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='username'>Username</label>
-        <input type='text' id='username' onChange={handleChange} />
-      </div>
-      <div>
-        <label htmlFor='age'>Age (Years)</label>
-        <input type='number' id='age' onChange={handleChange} />
-      </div>
-      <Button type='submit'>Add User</Button>
-    </form>
+    <Card className={styles.input}>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor='username'>Username</label>
+          <input
+            type='text'
+            id='username'
+            onChange={handleChange}
+            value={user.username}
+          />
+        </div>
+        <div>
+          <label htmlFor='age'>Age (Years)</label>
+          <input
+            type='number'
+            id='age'
+            onChange={handleChange}
+            value={user.age}
+          />
+        </div>
+        <Button type='submit'>Add User</Button>
+      </form>
+    </Card>
   );
 };
 
