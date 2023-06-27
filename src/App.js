@@ -15,7 +15,6 @@ function App() {
 
   const handleError = (error) => {
     setError(error);
-    console.log(error);
   };
   return (
     <div>
