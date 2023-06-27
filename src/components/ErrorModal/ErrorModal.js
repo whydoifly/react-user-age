@@ -1,4 +1,5 @@
 import Button from '../UI/Button';
+import Card from '../UI/Card';
 import styles from './ErrorModal.module.css';
 
 const ErrorModal = (props) => {
@@ -8,7 +9,7 @@ const ErrorModal = (props) => {
   return (
     <>
       <div className={styles.backdrop}></div>
-      <div className={styles.modal}>
+      <Card className={styles.modal}>
         <div className={styles.header}>
           <h2>{props.error.title}</h2>
         </div>
@@ -18,7 +19,7 @@ const ErrorModal = (props) => {
         <div className={styles.actions}>
           <Button onClick={handleRemoveError}>Okay</Button>
         </div>
-      </div>
+      </Card>
     </>
   );
 };
